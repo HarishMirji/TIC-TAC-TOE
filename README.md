@@ -13,22 +13,26 @@ Welcome to the multi-player console-based Tic-Tac-Toe game! This game allows any
    ```bash
    git clone https://github.com/yourusername/tic-tac-toe.git
 Navigate to the project folder:
-bash
-Copy code
 cd tic-tac-toe
+
 Run the game:
-bash
-Copy code
 java TicTacToe
+
 Follow the on-screen instructions to add players and take turns placing your symbols on the board.
+
+
 Rules
 Players take turns entering their moves.
 The game checks for winning combinations after every turn.
 The first player to align their symbols horizontally, vertically, or diagonally wins.
 If the board is filled and no player has won, the game ends in a draw.
+
+
 Requirements
 Java JDK 11 or higher.
 A terminal or console.
+
+
 Contributing
 Contributions are welcome! Feel free to submit issues or pull requests to improve this project.
 
