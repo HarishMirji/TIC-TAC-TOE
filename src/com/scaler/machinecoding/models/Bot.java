@@ -3,7 +3,7 @@ package com.scaler.machinecoding.models;
 public class Bot extends Player{
     private BotDifficultyLevel botDifficultyLevel;
 
-    public Bot(Symbol symbol, String name, PlayerType playerType, BotDifficultyLevel botDifficultyLevel) {
+    public Bot(Symbol symbol, String name, BotDifficultyLevel botDifficultyLevel) {
         super(symbol, name, PlayerType.BOT);
         this.botDifficultyLevel = botDifficultyLevel;
     }
@@ -14,5 +14,9 @@ public class Bot extends Player{
 
     public void setBotDifficultyLevel(BotDifficultyLevel botDifficultyLevel) {
         this.botDifficultyLevel = botDifficultyLevel;
+    }
+
+    public Cell makeMove(Board board) {
+        return null;
     }
 }

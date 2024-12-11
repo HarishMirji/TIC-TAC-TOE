@@ -43,4 +43,12 @@ public class Cell {
     public void setRow(int row) {
         this.row = row;
     }
+
+    public void displayCell() {
+        if(getCellStatus().equals(CellStatus.EMPTY)) {
+            System.out.print(" - |");
+        }else {
+            System.out.print(" " + getPlayer().getSymbol().getaChar() + " |");
+        }
+    }
 }
