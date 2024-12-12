@@ -102,9 +102,14 @@ public class Game {
     }
     public void makeMove(){
         Player currentPlayer = players.get(currentMovePlayerIndex);
+        System.out.println("It is " + currentPlayer.getName() + "'s turn.");
 
-        Cell proposedCell = currentPlayer.makeMove();
+        Cell proposedCell = currentPlayer.makeMove(board);
+
+        System.out.println("Move made at row " + proposedCell.getRow() + " and column " + proposedCell.getCol() + ".");
+
         if(!validateMaove(proposedCell)){
+            System.out.println("Invalid move. Please Try again");
             return;
         }
 
@@ -112,7 +117,7 @@ public class Game {
         cellInBoard.setCellStatus(CellStatus.FILLED);
         cellInBoard.setPlayer(currentPlayer);
 
-        Move move = new Move(proposedCell, currentPlayer);
+        Move move = new Move(cellInBoard, currentPlayer);
         moves.add(move);
 
         if (checkGameHasWon(move, currentPlayer)) return;
@@ -120,6 +125,22 @@ public class Game {
         if (CheckDraw()) return;
 
         currentMovePlayerIndex = (currentMovePlayerIndex + 1) % players.size();
+    }
+
+    public void undo(){
+        if(moves.size() == 0){
+            System.out.println("No moves to undo");
+            return;
+        }
+        Move lastMove = moves.get(moves.size() - 1);
+
+        Cell cellInBoard = lastMove.getCell();
+        cellInBoard.setCellStatus(CellStatus.EMPTY);
+        cellInBoard.setPlayer(null);
+
+        moves.remove(lastMove);
+
+        currentMovePlayerIndex = (currentMovePlayerIndex - 1 + players.size()) % players.size();
     }
 
     private boolean CheckDraw() {

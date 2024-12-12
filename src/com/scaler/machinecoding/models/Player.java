@@ -1,14 +1,18 @@
 package com.scaler.machinecoding.models;
 
+import java.util.Scanner;
+
 public class Player {
     private Symbol symbol;
     private String name;
     private PlayerType playerType;
+    private Scanner scanner;
 
     public Player(Symbol symbol, String name, PlayerType playerType) {
         this.symbol = symbol;
         this.name = name;
         this.playerType = playerType;
+        this.scanner = new Scanner(System.in);
     }
     public Symbol getSymbol() {
         return symbol;
@@ -29,7 +33,11 @@ public class Player {
         this.playerType = playerType;
     }
 
-    public Cell makeMove(){
-        return null;
+    public Cell makeMove(Board board){
+        System.out.println("Please tell row and column (starting from 0 for both):");
+        int row = scanner.nextInt();
+        int column = scanner.nextInt();
+
+        return new Cell(row, column);
     }
 }

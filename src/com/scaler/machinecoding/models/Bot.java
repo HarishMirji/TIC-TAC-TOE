@@ -1,11 +1,16 @@
 package com.scaler.machinecoding.models;
 
-public class Bot extends Player{
+import com.scaler.machinecoding.strategies.botPlayingStrategy.BotPlayingStrategy;
+import com.scaler.machinecoding.strategies.botPlayingStrategy.BotPlayingStrategyFactory;
+
+public class Bot extends Player {
     private BotDifficultyLevel botDifficultyLevel;
+    private BotPlayingStrategy botPlayingStrategy;
 
     public Bot(Symbol symbol, String name, BotDifficultyLevel botDifficultyLevel) {
         super(symbol, name, PlayerType.BOT);
         this.botDifficultyLevel = botDifficultyLevel;
+        this.botPlayingStrategy = BotPlayingStrategyFactory.getBotPlayingStrategyForDifficultyLevel(botDifficultyLevel);
     }
 
     public BotDifficultyLevel getBotDifficultyLevel() {
@@ -17,6 +22,6 @@ public class Bot extends Player{
     }
 
     public Cell makeMove(Board board) {
-        return null;
+        return botPlayingStrategy.makeMove(board);
     }
 }
